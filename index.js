@@ -1,213 +1,193 @@
-function createPopup(text, x, y, speed) {
-    const popup = document.createElement("div");
-    popup.className = "popup";
-    popup.style.left = x + "rem";
-    popup.style.top = y + "rem";
+let allTime = []
 
-    const textElement = document.createElement("div");
-    textElement.className = "text";
-    popup.appendChild(textElement);
-    document.body.appendChild(popup);
-
-    let i = 0;
-    const write = () => {
-        if (i < text.length) {
-            textElement.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(write, speed);
-        }
-    };
-    write()
-    setTimeout(() => popup.remove(), text.length * speed + 1000)
+//очистка таймера
+function clearAllTime() {
+    allTime.forEach(timeout => clearTimeout(timeout));
+    allTime = [];
 }
 
-async function set() {
+//выводим текст
+function Show(lines, duration = 1500) {
+    const container = document.getElementById('container')
+
+    const old = container.querySelectorAll('.line')
+
+    //удаяляем старые строки
+    old.forEach(line => {
+        line.classList.add('hide');
+        const timeout1 = setTimeout(() => line.remove(), 500);
+        allTime.push(timeout1);
+    })
+
+    //показываем ноые строки
+    lines.forEach((text, index) => {
+        const line = document.createElement('div');
+        line.className = 'line';
+        line.textContent = text;
+        container.appendChild(line);
+
+        const timeout2 = setTimeout(() => {
+            line.classList.add('show');
+        }, 50 + index * 100);
+        allTime.push(timeout2);
+    });
+
+    // Скрываем все
+    const timeout3 = setTimeout(() => {
+        const currentLines = container.querySelectorAll('.line');
+        currentLines.forEach(line => {
+            line.classList.add('hide');
+            const timeout4 = setTimeout(() => line.remove(), 500);
+            allTime.push(timeout4);
+        });
+    }, duration);
+    allTime.push(timeout3);
+
+
+}
+
+function set() {
+    clearAllTime();
+    const container = document.getElementById('container');
+    container.innerHTML = '';
     const audio = document.getElementById('audio')
 
     let text = [
+        //куплет
         {
-            time: 0, items: [
-                { text: "I", x: 30, y: 15, speed: 100 },
-                { text: "Wanna", x: 41, y: 20, speed: 150 },
-                { text: "Dance", x: 51, y: 25, speed: 200 }
-            ], trigger: false
+            time: 0.2,
+            line: ['I', 'Wanna', 'Dance'],
+            duration: 800,
+            trigger: false
         },
         {
-            time: 1, items: [
-                { text: "I", x: 30, y: 15, speed: 100 },
-                { text: "Wanna", x: 41, y: 20, speed: 150 },
-                { text: "Dance", x: 51, y: 25, speed: 200 },
-                { text: "In", x: 30, y: 15, speed: 100 },
-                { text: "The", x: 41, y: 20, speed: 150 },
-                { text: "Light", x: 51, y: 25, speed: 200 }
-            ], trigger: false
+            time: 1,
+            line: ['I', 'Wanna', 'Dance', 'In', 'The', 'Light'],
+            duration: 800,
+            trigger: false
         },
         {
-            time: 1, items: [
-                { text: "I", x: 30, y: 15, speed: 100 },
-                { text: "Wanna", x: 41, y: 20, speed: 150 },
-                { text: "Ride", x: 51, y: 25, speed: 200 }
-            ], trigger: false
+            time: 2,
+            line: ['I', 'Wanna', 'Ride'],
+            duration: 800,
+            trigger: false
         },
         {
-            time: 1, items: [
-                { text: "I", x: 30, y: 15, speed: 100 },
-                { text: "Wanna", x: 41, y: 20, speed: 150 },
-                { text: "Rock", x: 51, y: 25, speed: 200 },
-                { text: "You", x: 30, y: 15, speed: 100 },
-                { text: "Body", x: 30, y: 15, speed: 100 }
-            ], trigger: false
+            time: 3,
+            line: ['I', 'Wanna', 'Rock', 'You', 'Body'],
+            duration: 800,
+            trigger: false
         },
         {
-            time: 1, items: [
-                { text: "I", x: 30, y: 15, speed: 100 },
-                { text: "Wanna", x: 41, y: 20, speed: 150 },
-                { text: "Go", x: 51, y: 25, speed: 200 }
-            ], trigger: false
+            time: 4,
+            line: ['I', 'Wanna', 'Go'],
+            duration: 800,
+            trigger: false
         },
         {
-            time: 1, items: [
-                { text: "I", x: 30, y: 15, speed: 100 },
-                { text: "Wanna", x: 41, y: 20, speed: 150 },
-                { text: "Go", x: 51, y: 25, speed: 200 },
-                { text: "For", x: 30, y: 15, speed: 100 },
-                { text: "А Ride", x: 41, y: 20, speed: 150 }
-            ], trigger: false
+            time: 5,
+            line: ['I', 'Wanna', 'Go', 'For', 'А Ride'],
+            duration: 800,
+            trigger: false
         },
         {
-            time: 1, items: [
-                { text: "Hop", x: 30, y: 15, speed: 100 },
-                { text: "In The", x: 41, y: 20, speed: 150 },
-                { text: "Music And", x: 51, y: 25, speed: 200 },
-                { text: "Rock", x: 30, y: 15, speed: 100 },
-                { text: "You", x: 41, y: 20, speed: 150 },
-                { text: "Body", x: 51, y: 25, speed: 200 }
-            ], trigger: false
+            time: 6,
+            line: ['Hop', 'In The', 'Music And', 'Rock', 'You', 'Body'],
+            duration: 800,
+            trigger: false
         },
-        //повтор
+
+        //повтор куплета
         {
-            time: 0, items: [
-                { text: "I", x: 30, y: 15, speed: 100 },
-                { text: "Wanna", x: 41, y: 20, speed: 150 },
-                { text: "Dance", x: 51, y: 25, speed: 200 }
-            ], trigger: false
+            time: 7,
+            line: ['I', 'Wanna', 'Dance'],
+            duration: 800,
+            trigger: false
         },
         {
-            time: 1, items: [
-                { text: "I", x: 30, y: 15, speed: 100 },
-                { text: "Wanna", x: 41, y: 20, speed: 150 },
-                { text: "Dance", x: 51, y: 25, speed: 200 },
-                { text: "In", x: 30, y: 15, speed: 100 },
-                { text: "The", x: 41, y: 20, speed: 150 },
-                { text: "Light", x: 51, y: 25, speed: 200 }
-            ], trigger: false
+            time: 8,
+            line: ['I', 'Wanna', 'Dance', 'In', 'The', 'Light'],
+            duration: 800,
+            trigger: false
         },
         {
-            time: 1, items: [
-                { text: "I", x: 30, y: 15, speed: 100 },
-                { text: "Wanna", x: 41, y: 20, speed: 150 },
-                { text: "Ride", x: 51, y: 25, speed: 200 }
-            ], trigger: false
+            time: 9,
+            line: ['I', 'Wanna', 'Ride'],
+            duration: 800,
+            trigger: false
         },
         {
-            time: 1, items: [
-                { text: "I", x: 30, y: 15, speed: 100 },
-                { text: "Wanna", x: 41, y: 20, speed: 150 },
-                { text: "Rock", x: 51, y: 25, speed: 200 },
-                { text: "You", x: 30, y: 15, speed: 100 },
-                { text: "Body", x: 30, y: 15, speed: 100 }
-            ], trigger: false
+            time: 10,
+            line: ['I', 'Wanna', 'Rock', 'You', 'Body'],
+            duration: 800,
+            trigger: false
         },
         {
-            time: 1, items: [
-                { text: "I", x: 30, y: 15, speed: 100 },
-                { text: "Wanna", x: 41, y: 20, speed: 150 },
-                { text: "Go", x: 51, y: 25, speed: 200 }
-            ], trigger: false
+            time: 11,
+            line: ['I', 'Wanna', 'Go'],
+            duration: 800,
+            trigger: false
         },
         {
-            time: 1, items: [
-                { text: "I", x: 30, y: 15, speed: 100 },
-                { text: "Wanna", x: 41, y: 20, speed: 150 },
-                { text: "Go", x: 51, y: 25, speed: 200 },
-                { text: "For", x: 30, y: 15, speed: 100 },
-                { text: "А Ride", x: 41, y: 20, speed: 150 }
-            ], trigger: false
+            time: 12,
+            line: ['I', 'Wanna', 'Go', 'For', 'А Ride'],
+            duration: 800,
+            trigger: false
         },
         {
-            time: 1, items: [
-                { text: "Hop", x: 30, y: 15, speed: 100 },
-                { text: "In The", x: 41, y: 20, speed: 150 },
-                { text: "Music And", x: 51, y: 25, speed: 200 },
-                { text: "Rock", x: 30, y: 15, speed: 100 },
-                { text: "You", x: 41, y: 20, speed: 150 },
-                { text: "Body", x: 51, y: 25, speed: 200 }
-            ], trigger: false
+            time: 13,
+            line: ['Hop', 'In The', 'Music And', 'Rock', 'You', 'Body'],
+            duration: 800,
+            trigger: false
         },
         //припев
         {
-            time: 3, items: [
-                { text: "Rock", x: 31, y: 15, speed: 100 },
-                { text: "That", x: 51, y: 15, speed: 150 },
-                { text: "Body", x: 41, y: 25, speed: 100 }
-            ], triggered: false
-        },
-
-        {
-            time: 5, items: [
-                { text: "C'mon", x: 41, y: 15, speed: 150 },
-                { text: "C'mon", x: 41, y: 20, speed: 100 }
-            ], triggered: false
+            time: 14,
+            line: ['Rock', 'That', 'Body'],
+            duration: 800,
+            trigger: false
         },
         {
-            time: 3, items: [
-                { text: "Rock", x: 31, y: 15, speed: 100 },
-                { text: "That", x: 51, y: 15, speed: 150 },
-                { text: "Body", x: 41, y: 25, speed: 100 },
-                { text: "Rock", x: 31, y: 15, speed: 100 },
-                { text: "You", x: 51, y: 15, speed: 150 },
-                { text: "Body", x: 41, y: 25, speed: 100 },
-            ], triggered: false
+            time: 15,
+            line: ['C`mon', 'C`mon'],
+            duration: 800,
+            trigger: false
         },
         {
-            time: 3, items: [
-                { text: "Rock", x: 31, y: 15, speed: 100 },
-                { text: "That", x: 51, y: 15, speed: 150 },
-                { text: "Body", x: 41, y: 25, speed: 100 }
-            ], triggered: false
+            time: 16,
+            line: ['Rock', 'That', 'Body', 'Rock', 'You', 'Body'],
+            duration: 800,
+            trigger: false
         },
-
         {
-            time: 5, items: [
-                { text: "C'mon", x: 41, y: 15, speed: 150 },
-                { text: "C'mon", x: 41, y: 20, speed: 100 }
-            ], triggered: false
+            time: 17,
+            line: ['Rock', 'That', 'Body'],
+            duration: 800,
+            trigger: false
         },
-                {
-            time: 3, items: [
-                { text: "Rock", x: 31, y: 15, speed: 100 },
-                { text: "That", x: 51, y: 15, speed: 150 },
-                { text: "Body", x: 41, y: 25, speed: 100 }
-            ], triggered: false
+        {
+            time: 18,
+            line: ['C`mon', 'C`mon'],
+            duration: 800,
+            trigger: false
+        },
+        {
+            time: 19,
+            line: ['Rock', 'That', 'Body'],
+            duration: 800,
+            trigger: false
         },
     ]
 
     audio.addEventListener('timeupdate', () => {
         const time = audio.currentTime
 
-        text.forEach((obj, index) => {
+        text.forEach((obj) => {
             if (time >= obj.time && !obj.trigger) {
                 obj.trigger = true
-                obj.items.forEach((item, i) => {
-                    const delay = 150 * i
-                    setTimeout(() => createPopup(item.text, item.x, item.y, item.speed), delay);
-                });
+                Show(obj.line, obj.duration)
             }
         })
     })
     audio.play();
 }
-
-
-
-
