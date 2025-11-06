@@ -33,6 +33,8 @@ body {
 
 .button-container {
   text-align: center;
+  position: relative;
+  z-index: 1000;
 }
 
 button {
@@ -65,7 +67,11 @@ button:active {
   width: 80%;
   max-width: 800px;
   z-index: 100;                 
-  pointer-events: none;         
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .line {
@@ -74,9 +80,10 @@ button:active {
   color: black;
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); 
   margin: 0;
-  line-height: 1.2;             
+  white-space: nowrap;
   opacity: 0;                   
-  letter-spacing: 0.05em;      
+  letter-spacing: 0.05em;
+  display: block;
 }
 
 .line.show {
