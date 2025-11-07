@@ -26,9 +26,37 @@ body {
   height: 100vh;
   display: flex;
   justify-content: center;
-  background-color: #ffffff; 
   font-family: Arial, sans-serif; 
   overflow: hidden; 
+
+  /* Переливающийся фон с акцентом на зелёных и светлых тонах */
+  background: linear-gradient(270deg, 
+    #e0f7e0, 
+    #d1f0d1, 
+    #c2eaca, 
+    #b3e3c3, 
+    #a5dccd, 
+    #96d5c6, 
+    #88cec0, 
+    #7ac8b9, 
+    #6cc2b3, 
+    #5ebbac, 
+    #50b4a5
+  );
+  background-size: 300% 300%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .button-container {

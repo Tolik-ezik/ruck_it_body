@@ -62,7 +62,7 @@ function set() {
             trigger: false
         },
         {
-            time: 1.5,
+            time: 0.5,
             line: ['I', 'Wanna', 'Dance', 'In', 'The', 'Light'],
             duration: 800,
             trigger: false
@@ -75,105 +75,133 @@ function set() {
         },
         {
             time: 4.5,
-            line: ['I', 'Wanna', 'Rock', 'You', 'Body'],
+            line: ['I', 'Wanna'],
             duration: 800, trigger: false
         },
         {
-            time: 6,
+            time: 4.7,
+            line: ['Rock', 'You', 'Body'],
+            duration: 800, trigger: false
+        },
+        {
+            time: 6.1,
+            line: ['I', 'Wanna', 'Go'],
+            duration: 800,
+            trigger: false
+        },
+        {
+            time: 7.3,
             line: ['I', 'Wanna', 'Go'],
             duration: 800,
             trigger: false
         },
         {
             time: 7.5,
-            line: ['I', 'Wanna', 'Go', 'For', 'А Ride'],
+            line: ['For', 'А Ride'],
             duration: 800,
             trigger: false
         },
         {
-            time: 9,
-            line: ['Hop', 'In The', 'Music And', 'Rock', 'You', 'Body'],
+            time: 10,
+            line: ['Hop', 'In The', 'Music', 'And'],
+            duration: 1200,
+            trigger: false
+        },
+        {
+            time: 11.1,
+            line: ['Rock', 'You', 'Body'],
             duration: 1200,
             trigger: false
         },
 
         // Повтор куплета
-        {
-            time: 11,
+                {
+            time: 13,
             line: ['I', 'Wanna', 'Dance'],
             duration: 800,
             trigger: false
         },
         {
-            time: 12.5,
+            time: 14.2,
             line: ['I', 'Wanna', 'Dance', 'In', 'The', 'Light'],
             duration: 800,
             trigger: false
         },
         {
-            time: 14,
+            time: 17.2,
             line: ['I', 'Wanna', 'Ride'],
             duration: 800,
             trigger: false
         },
         {
-            time: 15.5,
+            time: 18.4,
             line: ['I', 'Wanna', 'Rock', 'You', 'Body'],
+            duration: 800, trigger: false
+        },
+        {
+            time: 20.8,
+            line: ['I', 'Wanna', 'Go'],
             duration: 800,
             trigger: false
         },
-        {
-            time: 17,
+                {
+            time: 21.4,
             line: ['I', 'Wanna', 'Go'],
             duration: 800,
             trigger: false
         },
         {
-            time: 18.5,
-            line: ['I', 'Wanna', 'Go', 'For', 'А Ride'],
+            time: 21.7,
+            line: ['For', 'А Ride'],
             duration: 800,
             trigger: false
         },
         {
-            time: 20,
-            line: ['Hop', 'In The', 'Music And', 'Rock', 'You', 'Body'],
+            time: 24.6,
+            line: ['Hop', 'In The', 'Music', 'And'],
+            duration: 1200,
+            trigger: false
+        },
+        {
+            time: 25,
+            line: ['Rock', 'You', 'Body'],
             duration: 1200,
             trigger: false
         },
 
         // Припев
         {
-            time: 22,
-            line: ['Rock', 'That', 'Body'],
-            duration: 800,
-            trigger: false
-        },
-        {
-            time: 23.5,
-            line: ['C`mon', 'C`mon'],
-            duration: 800,
-            trigger: false
-        },
-        {
-            time: 25,
-            line: ['Rock', 'That', 'Body', 'Rock', 'You', 'Body'],
-            duration: 800,
-            trigger: false
-        },
-        {
-            time: 26.5,
-            line: ['Rock', 'That', 'Body'],
-            duration: 800,
-            trigger: false
-        },
-        {
             time: 28,
+            line: ['Rock', 'That', 'Body'],
+            duration: 800,
+            trigger: false
+        },
+        {
+            time: 28.7,
             line: ['C`mon', 'C`mon'],
             duration: 800,
             trigger: false
         },
         {
-            time: 29.5,
+            time: 30,
+            line: ['Rock', 'That', 'Body', '(Rock', 'You', 'Body)'],
+            duration: 800,
+            trigger: false
+        },
+        {
+            time: 31.5,
+            line: ['Rock', 'That', 'Body'],
+            duration: 800,
+            trigger: false
+        },
+        {
+            time: 32.2,
+            line: ['C`mon', 'C`mon'],
+            duration: 800,
+            trigger: false
+        },
+        {
+            time: 33.5,
             line: ['Rock', 'That', 'Body'],
             duration: 1500,
             trigger: false
